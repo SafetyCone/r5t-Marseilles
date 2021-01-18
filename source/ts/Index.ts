@@ -1,3 +1,4 @@
+export * from "./Extensions/MapExtensions";
 export * from "./Map";
 export * from "./MapStyles";
 export * from "./MarkedMap";

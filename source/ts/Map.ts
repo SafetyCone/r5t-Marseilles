@@ -120,6 +120,6 @@ export class Map
     {
         this.MapboxMap.removeLayer(layerName);
 
-        ArrayHelper.RemoveValue(this.AddedLayers, layerName);
+        ArrayHelper.RemoveValue(this.zAddedLayers, layerName);
     }
 }

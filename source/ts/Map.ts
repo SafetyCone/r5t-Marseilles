@@ -19,24 +19,24 @@ export class Map
         return readOnlyCopy;
     }
 
-    private zOnMapClickedAll = new EventDispatcher<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>();
+    private zOnAnyMapClick = new EventDispatcher<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>();
     /**
      * Event fired for all map clicks, even clicks that occur within the features of a layer.
      * This is useful for moving a map-marker, for example.
      */
-    public get OnMapClickedAll(): IEvent<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>
+    public get OnAnyMapClick(): IEvent<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>
     {
-        return this.zOnMapClickedAll.asEvent();
+        return this.zOnAnyMapClick.asEvent();
     }
 
-    private zOnMapClicked = new EventDispatcher<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>();
+    private zOnMapClick = new EventDispatcher<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>();
     /**
      * Event fired for clicks not handled by layers, which should be the default.
      * Unfortunately, Mapbox decided that map click handlers should fire before layer click handlers. This is useless, since layers are contained within the map, so the layer conceptually has a higher "z-index" than the map.
      */
-    public get OnMapClicked(): IEvent<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>
+    public get OnMapClick(): IEvent<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>
     {
-        return this.zOnMapClicked.asEvent();
+        return this.zOnMapClick.asEvent();
     }
 
 
@@ -51,7 +51,7 @@ export class Map
         this.MapboxMap.on("click", (clickEvent) =>
         {
             // Dispatch the event for any click.
-            this.zOnMapClickedAll.dispatch(this, clickEvent);
+            this.zOnAnyMapClick.dispatch(this, clickEvent);
 
             // Now check that a layer was not click before dispatching the default click.
             // Layers will handle their own click events.
@@ -63,7 +63,7 @@ export class Map
                 return;
             }
 
-            this.zOnMapClicked.dispatch(this, clickEvent);
+            this.zOnMapClick.dispatch(this, clickEvent);
         });
     }
 

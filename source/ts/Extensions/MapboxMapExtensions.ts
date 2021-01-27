@@ -25,4 +25,16 @@ export class MapboxMapExtensions
         mapboxMap.touchZoomRotate.enable();
         mapboxMap.touchPitch.enable();
     }
+
+    /**
+     * For some reason for a Mapbox map, map.setMaxBounds() with arbitration bounds causes the map to freak out when scrolling/zooming/etc.
+     * This method is a work around for the issue, in that it uses the current bounds of the map as the maximum bounds of the map.
+     * Basically, get the use map.fitBounds() to fit to the bounds you want, then set the current bounds as the maximum bounds.
+     */
+    public static SetCurrentBoundsAsMaxBounds(mapboxMap: MapboxMap)
+    {
+        let currentBounds = mapboxMap.getBounds();
+
+        mapboxMap.setMaxBounds(currentBounds);
+    }
 }

@@ -1,9 +1,10 @@
-import { ArrayHelper, JavaScriptHelper } from "r5t-Avignon/Index";
-
 import mapboxgl from "mapbox-gl"
 import * as turf from "@turf/turf";
-import { MapStyles } from "./MapStyles";
 import { EventDispatcher, IEvent } from "strongly-typed-events";
+
+import { ArrayHelper, JavaScriptHelper } from "r5t-Avignon/Index";
+
+import { MapStyles } from "../MapStyles";
 
 export class Map
 {

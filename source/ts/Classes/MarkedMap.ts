@@ -1,7 +1,7 @@
 import mapboxgl from "mapbox-gl";
 
 import { Map } from "./Map";
-import { MapStyles } from "./MapStyles";
+import { MapStyles } from "../MapStyles";
 
 export class MarkedMap extends Map
 {

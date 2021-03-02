@@ -5,6 +5,7 @@ import { EventDispatcher, IEvent } from "strongly-typed-events";
 import { ArrayHelper, JavaScriptHelper } from "r5t-Avignon/Index";
 
 import { MapStyles } from "../MapStyles";
+import { MapClickEvent } from "../Types/MapClickEvent";
 
 export class Map
 {
@@ -20,22 +21,22 @@ export class Map
         return readOnlyCopy;
     }
 
-    private zOnAnyMapClick = new EventDispatcher<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>();
+    private zOnAnyMapClick = new EventDispatcher<Map, MapClickEvent>();
     /**
      * Event fired for all map clicks, even clicks that occur within the features of a layer.
      * This is useful for moving a map-marker, for example.
      */
-    public get OnAnyMapClick(): IEvent<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>
+    public get OnAnyMapClick(): IEvent<Map, MapClickEvent>
     {
         return this.zOnAnyMapClick.asEvent();
     }
 
-    private zOnMapClick = new EventDispatcher<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>();
+    private zOnMapClick = new EventDispatcher<Map, MapClickEvent>();
     /**
      * Event fired for clicks not handled by layers, which should be the default.
      * Unfortunately, Mapbox decided that map click handlers should fire before layer click handlers. This is useless, since layers are contained within the map, so the layer conceptually has a higher "z-index" than the map.
      */
-    public get OnMapClick(): IEvent<Map, mapboxgl.MapMouseEvent & mapboxgl.EventData>
+    public get OnMapClick(): IEvent<Map, MapClickEvent>
     {
         return this.zOnMapClick.asEvent();
     }

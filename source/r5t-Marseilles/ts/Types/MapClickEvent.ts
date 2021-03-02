@@ -1,0 +1,1 @@
+export type MapClickEvent = mapboxgl.MapMouseEvent & mapboxgl.EventData;

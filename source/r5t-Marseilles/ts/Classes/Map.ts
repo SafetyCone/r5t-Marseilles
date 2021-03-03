@@ -2,7 +2,7 @@ import mapboxgl from "mapbox-gl"
 import * as turf from "@turf/turf";
 import { EventDispatcher, IEvent } from "strongly-typed-events";
 
-import { ArrayHelper, JavaScriptHelper } from "r5t-Avignon/Index";
+import { ArrayHelper, JavaScriptHelper } from "r5t-Avignon";
 
 import { MapStyles } from "../MapStyles";
 import { MapClickEvent } from "../Types/MapClickEvent";

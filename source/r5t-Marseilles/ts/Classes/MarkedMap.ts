@@ -5,6 +5,8 @@ import { MapStyles } from "../MapStyles";
 
 export class MarkedMap extends Map
 {
+    //#region Static
+
     public static BuildMapboxMarker(): mapboxgl.Marker
     {
         let markerOptions: mapboxgl.MarkerOptions = {
@@ -19,6 +21,8 @@ export class MarkedMap extends Map
 
         return marker;
     }
+
+    //#endregion
 
 
     public readonly MapboxMarker: mapboxgl.Marker;
